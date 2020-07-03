@@ -1,0 +1,29 @@
+body {
+    margin: 0px;
+    background-color: blanchedalmond;
+}
+
+.toolbox {
+    height: 100vh;
+    position: absolute;
+    background-color: blue;
+    width: 100px;
+}
+
+.toolbox.left {
+    left: 0px;
+    top: 0px;
+}
+
+.toolbox.right {
+    right: 0px;
+    top: 0px;
+}
+
+#canvas{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: cornsilk;
+}
