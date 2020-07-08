@@ -1,12 +1,30 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     // init toolbar
     const toolbarIconList = getToolbarIcons();
-    Object.keys(toolbarIconList).map(key => loadTools(key, toolbarIconList[key]));
+    Object.keys(toolbarIconList).map(key => loadLeftToolbar(key, toolbarIconList[key]));
     initLinesWidths();
+    loadRightToolbar();
 });
 
 
-function loadTools(group, toolbarIcons) {
+function loadRightToolbar() {
+    const toolbar = document.getElementById('swatches');
+    const colors = getColors();
+    colors.forEach(color => toolbar.appendChild(createColor(color)));
+};
+
+function createColor(color){
+    const colorDiv = document.createElement('div');
+    colorDiv.setAttribute('class', 'item');
+    colorDiv.setAttribute('data-color', `${color}`);
+    const innerDiv = document.createElement('div');
+    innerDiv.setAttribute('class', 'swatch');
+    innerDiv.setAttribute('style', `background-color:${color};`);
+    colorDiv.appendChild(innerDiv);
+    return colorDiv;
+};
+
+function loadLeftToolbar(group, toolbarIcons) {
     // parse group commands div
     const toolbar = document.getElementById(group);
 
@@ -58,3 +76,14 @@ function getToolbarIcons() {
 
     return toolbarDict;
 };
+
+function getColors() {
+    return [
+        '#ffffff',
+        '#000000',
+        '#ff0000',
+        '#00ff00',
+        '#0000ff',
+        '#00ffff'
+    ]
+}
