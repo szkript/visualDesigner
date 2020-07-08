@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocuPaint</title>
     <link rel="stylesheet" href="style.css">
+    <script src="js/toolbar.js" defer></script>
 </head>
 <body>
 
     <div class="toolbox left">
-        <div class="group commands">
+        <div class="group commands" id='gc'>
 
         </div>
+
+
         <div class="group shapes">
 
         </div>
@@ -20,7 +23,7 @@
         </div>
     </div>
     
-    <canvas id="canvas" width="640" height="400"></canvas>
+    <canvas id="canvas" width="800" height="600"></canvas>
 
     <div class="toolbox right">
         <div class="group swatches"></div>

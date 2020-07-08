@@ -7,7 +7,13 @@ body {
     height: 100vh;
     position: absolute;
     background-color: blue;
-    width: 100px;
+    width: 60px;
+}
+
+.toolbox img{
+    max-width: 80%;
+    height: auto;
+    margin-left: 10%;
 }
 
 .toolbox.left {
