@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     // init toolbar
     const toolbarIconList = getToolbarIcons();
-    Object.keys(toolbarIconList).map(key => loadTools(key, toolbarIconList[key]))
+    Object.keys(toolbarIconList).map(key => loadTools(key, toolbarIconList[key]));
+    initLinesWidths();
 });
 
 
@@ -31,7 +32,7 @@ function createLineWidth(pixelSize) {
     pixelChooserDiv.setAttribute('title', `${pixelSize} Pixel`);
     const innerDiv = document.createElement('div');
     innerDiv.setAttribute('class', 'linewidth');
-    innerDiv.setAttribute('style', `width:${pixelSize};height:${pixelSize}`);
+    innerDiv.setAttribute('style', `width:${pixelSize}px;height:${pixelSize}px`);
     pixelChooserDiv.appendChild(innerDiv);
     return pixelChooserDiv;
 };

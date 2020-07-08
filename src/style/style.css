@@ -25,11 +25,11 @@ body {
     filter: invert();
 }
 
-.toolbox .group .linewidths .item {
+.toolbox .group.linewidths .item {
     position: relative;
 }
 
-.toolbox .group .linewidths .item .linewidth {
+.toolbox .group.linewidths .item .linewidth {
     position: absolute;
     background-color: white;
     border-radius: 50%;
