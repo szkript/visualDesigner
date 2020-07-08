@@ -3,24 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuPaint</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Planything</title>
+    <link rel="stylesheet" href="src/style/style.css">
     <script src="js/toolbar.js" defer></script>
 </head>
 <body>
 
     <div class="toolbox left">
-        <div class="group commands" id='gc'>
+        <div class="group commands" id='gc'></div>
 
-        </div>
+        <div class="group shapes"></div>
+        
+        <div class="group tools"></div>
 
-
-        <div class="group shapes">
-
-        </div>
-        <div class="group linewidth">
-
-        </div>
+        <div class="group linewidths" id="lw"></div>
     </div>
     
     <canvas id="canvas" width="800" height="600"></canvas>
