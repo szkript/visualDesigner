@@ -1,26 +1,30 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     // init toolbar
     const toolbarIconList = getToolbarIcons();
-    loadTools(toolbarIconList);
+    Object.keys(toolbarIconList).map(key => loadTools(key, toolbarIconList[key]))
 });
 
 
-function loadTools(toolbarIcons) {
+function loadTools(group, toolbarIcons) {
     // parse group commands div
-    const commandToolbar = document.getElementById('gc');
+    const toolbar = document.getElementById(group);
+
     toolbarIcons.forEach(icon => {
-        commandToolbar.appendChild(createToolbarBlock(icon))
+        toolbar.appendChild(createToolbarBlock(icon))
     });
-    // parse group lineWidths div
-    const lineWidthToolbar = document.getElementById('lw');
-    // create 5 different pixelSize chooser
-    const pixelSizes = 5;
-    for(let pixelSize = 1; pixelSize <= pixelSizes; pixelSize++){
-        lineWidthToolbar.appendChild(createLineWidth(pixelSize));
-    }
 };
 
-function createLineWidth(pixelSize){
+function initLinesWidths() {
+    // parse group lineWidths div
+    const lineWidthToolbar = document.getElementById('linewidths');
+    // create 5 different pixelSize chooser
+    const pixelSizes = 5;
+    for (let pixelSize = 1; pixelSize <= pixelSizes; pixelSize++) {
+        lineWidthToolbar.appendChild(createLineWidth(pixelSize));
+    };
+};
+
+function createLineWidth(pixelSize) {
     const pixelChooserDiv = document.createElement('div');
     pixelChooserDiv.setAttribute('class', 'item');
     pixelChooserDiv.setAttribute('data-line-width', pixelSize);
@@ -29,10 +33,10 @@ function createLineWidth(pixelSize){
     innerDiv.setAttribute('class', 'linewidth');
     innerDiv.setAttribute('style', `width:${pixelSize};height:${pixelSize}`);
     pixelChooserDiv.appendChild(innerDiv);
-    return pixelChooserDiv;    
+    return pixelChooserDiv;
 };
 
-function createToolbarBlock(toolElement){
+function createToolbarBlock(toolElement) {
     const toolDiv = document.createElement('div');
     toolDiv.setAttribute('class', 'item');
     toolDiv.setAttribute('data-tool', toolElement);
@@ -45,21 +49,11 @@ function createToolbarBlock(toolElement){
 };
 
 function getToolbarIcons() {
-    return [
-        'brush',
-        'color_picker',
-        'eraser',
-        'fill_color',
-        'move',
-        'new_file',
-        'open_file',
-        'open_folder',
-        'oval',
-        'pencil',
-        'rectangle',
-        'redo',
-        'undo',
-        'round',
-        'text'
-    ]
+    const toolbarDict = {
+        commands: ['undo', 'redo', 'download'],
+        shapes: ['line', 'rectangle', 'circle', 'triangle'],
+        tools: ['pencil', 'brush', 'paint-bucket', 'eraser', 'text']
+    };
+
+    return toolbarDict;
 };
