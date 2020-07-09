@@ -2,11 +2,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // init toolbar
     const toolbarIconList = getToolbarIcons();
     Object.keys(toolbarIconList).map(key => loadLeftToolbar(key, toolbarIconList[key]));
+    initCollection();
+});
+
+function initCollection(){
     initLinesWidths();
     initBrushWidths();
     loadRightToolbar();
     setDefaultActiveItems();
-});
+};
 
 function setDefaultActiveItems() {
     const defaultTool = "pencil";
@@ -87,9 +91,6 @@ function initBrushWidths() {
     };
 };
 
-function createBrushWidth(pixelSize) {
-
-}
 
 function createToolWidth(toolType, pixelSize) {
     const pixelChooserDiv = document.createElement('div');

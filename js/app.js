@@ -22,11 +22,34 @@ function activeSelector(dataGroup) {
                 document.querySelector(`${dataGroup}.active`).classList.toggle("active");
                 item.classList.toggle("active");
 
-                let selectedTool = item.getAttribute('data-tool');
+                if (dataGroup == "[data-tools]") {
+                    let selectedTool = item.getAttribute('data-tools');
 
+                    switch (selectedTool) {
+                        case Tool.TOOL_LINE:
+                        case Tool.TOOL_RECTANGLE:
+                        case Tool.TOOL_CIRCLE:
+                        case Tool.TOOL_TRIANGLE:
+                        case Tool.TOOL_PENCIL:
+                            // activate shape linewidths group
+                            document.querySelector(".group.for-shapes").style.display = "block";
+                            // invisible brush linewidth group
+                            document.querySelector(".group.for-brush").style.display = "none";
+                            break;
+                        case Tool.TOOL_BRUSH:
+                            // activate brush linewidths group
+                            document.querySelector(".group.for-shapes").style.display = "none";
+                            // invisible shape linewidth group
+                            document.querySelector(".group.for-brush").style.display = "block";
+                            break;
+                        default:
+                            // make invisible both linewidth group
+                            document.querySelector(".group.for-brush").style.display = "none";
+                            document.querySelector(".group.for-shapes").style.display = "none";
+                    }
+                }
             });
         });
-    
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
