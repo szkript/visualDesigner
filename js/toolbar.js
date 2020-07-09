@@ -1,11 +1,22 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     // init toolbar
+    const defaultTool = "pencil";
     const toolbarIconList = getToolbarIcons();
     Object.keys(toolbarIconList).map(key => loadLeftToolbar(key, toolbarIconList[key]));
     initLinesWidths();
     loadRightToolbar();
+    setDefaultActiveItems(defaultTool);
 });
 
+function setDefaultActiveItems(defaultTool){
+    document.querySelectorAll('[data-tools]').forEach(
+        tool => {
+            if (tool.getAttribute('data-tools') === defaultTool){
+                tool.setAttribute("class", "item active");
+            }
+        }
+    )
+};
 
 function loadRightToolbar() {
     const toolbar = document.getElementById('swatches');
@@ -29,7 +40,7 @@ function loadLeftToolbar(group, toolbarIcons) {
     const toolbar = document.getElementById(group);
 
     toolbarIcons.forEach(icon => {
-        toolbar.appendChild(createToolbarBlock(icon))
+        toolbar.appendChild(createToolbarBlock(group, icon))
     });
 };
 
@@ -55,10 +66,10 @@ function createLineWidth(pixelSize) {
     return pixelChooserDiv;
 };
 
-function createToolbarBlock(toolElement) {
+function createToolbarBlock(group, toolElement) {
     const toolDiv = document.createElement('div');
     toolDiv.setAttribute('class', 'item');
-    toolDiv.setAttribute('data-tool', toolElement);
+    toolDiv.setAttribute(`data-${group}`, toolElement);
     toolDiv.setAttribute('title', `${toolElement} tool`);
     const toolImg = document.createElement('img');
     toolImg.setAttribute('src', `src/tool_images/${toolElement}_icon.png`);
