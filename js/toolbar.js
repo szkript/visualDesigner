@@ -1,21 +1,40 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     // init toolbar
-    const defaultTool = "pencil";
     const toolbarIconList = getToolbarIcons();
     Object.keys(toolbarIconList).map(key => loadLeftToolbar(key, toolbarIconList[key]));
     initLinesWidths();
     loadRightToolbar();
-    setDefaultActiveItems(defaultTool);
+    setDefaultActiveItems();
 });
 
-function setDefaultActiveItems(defaultTool){
+function setDefaultActiveItems(){
+    const defaultTool = "pencil";
+    const defaultColor = "#000000";
+    const defaultPixelSize = "1";
+
     document.querySelectorAll('[data-tools]').forEach(
         tool => {
             if (tool.getAttribute('data-tools') === defaultTool){
                 tool.setAttribute("class", "item active");
             }
         }
-    )
+    );
+
+    document.querySelectorAll('[data-color]').forEach(
+        color => {
+            if (color.getAttribute('data-color') === defaultColor){
+                color.setAttribute("class", "item active");
+            }
+        }
+    );
+
+    document.querySelectorAll('[data-line-width]').forEach(
+        pixelSize => {
+            if (pixelSize.getAttribute('data-line-width') === defaultPixelSize){
+                pixelSize.setAttribute("class", "item active");
+            }
+        }
+    );
 };
 
 function loadRightToolbar() {
