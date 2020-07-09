@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     setDefaultActiveItems();
 });
 
-function setDefaultActiveItems(){
+function setDefaultActiveItems() {
     const defaultTool = "pencil";
     const defaultColor = "#000000";
     const defaultPixelSize = "1";
 
     document.querySelectorAll('[data-tools]').forEach(
         tool => {
-            if (tool.getAttribute('data-tools') === defaultTool){
+            if (tool.getAttribute('data-tools') === defaultTool) {
                 tool.setAttribute("class", "item active");
             }
         }
@@ -22,7 +22,7 @@ function setDefaultActiveItems(){
 
     document.querySelectorAll('[data-color]').forEach(
         color => {
-            if (color.getAttribute('data-color') === defaultColor){
+            if (color.getAttribute('data-color') === defaultColor) {
                 color.setAttribute("class", "item active");
             }
         }
@@ -30,7 +30,7 @@ function setDefaultActiveItems(){
 
     document.querySelectorAll('[data-line-width]').forEach(
         pixelSize => {
-            if (pixelSize.getAttribute('data-line-width') === defaultPixelSize){
+            if (pixelSize.getAttribute('data-line-width') === defaultPixelSize) {
                 pixelSize.setAttribute("class", "item active");
             }
         }
@@ -43,7 +43,7 @@ function loadRightToolbar() {
     colors.forEach(color => toolbar.appendChild(createColor(color)));
 };
 
-function createColor(color){
+function createColor(color) {
     const colorDiv = document.createElement('div');
     colorDiv.setAttribute('class', 'item');
     colorDiv.setAttribute('data-color', `${color}`);
