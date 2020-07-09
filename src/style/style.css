@@ -41,6 +41,14 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.toolbox .group.linewidths .item .brushwidth {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .toolbox.left {
     left: 0px;

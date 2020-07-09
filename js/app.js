@@ -11,6 +11,7 @@ function initEventListeners() {
     // could be a foreach but idc
     activeSelector("[data-tools]");
     activeSelector("[data-line-width]");
+    activeSelector("[data-brush-width]");
     activeSelector("[data-color]");
     console.log("event listeners initialized");
 };

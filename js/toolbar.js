@@ -15,7 +15,8 @@ function initCollection(){
 function setDefaultActiveItems() {
     const defaultTool = "pencil";
     const defaultColor = "#000000";
-    const defaultPixelSize = "1";
+    const defaultShapePixelSize = "1";
+    const defaultBrushPixelSize = "4";
 
     document.querySelectorAll('[data-tools]').forEach(
         tool => {
@@ -35,7 +36,14 @@ function setDefaultActiveItems() {
 
     document.querySelectorAll('[data-line-width]').forEach(
         pixelSize => {
-            if (pixelSize.getAttribute('data-line-width') === defaultPixelSize) {
+            if (pixelSize.getAttribute('data-line-width') === defaultShapePixelSize) {
+                pixelSize.setAttribute("class", "item active");
+            }
+        }
+    );
+    document.querySelectorAll('[data-brush-width]').forEach(
+        pixelSize => {
+            if (pixelSize.getAttribute('data-brush-width') === defaultBrushPixelSize) {
                 pixelSize.setAttribute("class", "item active");
             }
         }
