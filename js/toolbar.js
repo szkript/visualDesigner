@@ -36,7 +36,7 @@ function setDefaultActiveItems() {
         }
     );
 };
-
+ 
 function loadRightToolbar() {
     const toolbar = document.getElementById('swatches');
     const colors = getColors();
@@ -57,7 +57,10 @@ function createColor(color) {
 function loadLeftToolbar(group, toolbarIcons) {
     // parse group commands div
     const toolbar = document.getElementById(group);
-
+    // little workaround for one active item from separate groups
+    if (group !== "commands"){
+        group = "tools";
+    };
     toolbarIcons.forEach(icon => {
         toolbar.appendChild(createToolbarBlock(group, icon))
     });
