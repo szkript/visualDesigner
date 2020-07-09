@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const toolbarIconList = getToolbarIcons();
     Object.keys(toolbarIconList).map(key => loadLeftToolbar(key, toolbarIconList[key]));
     initLinesWidths();
+    initBrushWidths();
     loadRightToolbar();
     setDefaultActiveItems();
 });
@@ -36,7 +37,7 @@ function setDefaultActiveItems() {
         }
     );
 };
- 
+
 function loadRightToolbar() {
     const toolbar = document.getElementById('swatches');
     const colors = getColors();
@@ -58,7 +59,7 @@ function loadLeftToolbar(group, toolbarIcons) {
     // parse group commands div
     const toolbar = document.getElementById(group);
     // little workaround for one active item from separate groups
-    if (group !== "commands"){
+    if (group !== "commands") {
         group = "tools";
     };
     toolbarIcons.forEach(icon => {
@@ -70,19 +71,33 @@ function initLinesWidths() {
     // parse group lineWidths div
     const lineWidthToolbar = document.getElementById('linewidths');
     // create 5 different pixelSize chooser
-    const pixelSizes = 5;
-    for (let pixelSize = 1; pixelSize <= pixelSizes; pixelSize++) {
-        lineWidthToolbar.appendChild(createLineWidth(pixelSize));
+    const maxPixelSize = 5;
+    for (let pixelSize = 1; pixelSize <= maxPixelSize; pixelSize++) {
+        lineWidthToolbar.appendChild(createToolWidth("line", pixelSize));
     };
 };
 
-function createLineWidth(pixelSize) {
+function initBrushWidths() {
+    // parse group lineWidths div
+    const brushWidthToolbar = document.getElementById('brushwidths');
+    // create 5 different pixelSize chooser
+    const maxPixelSize = 9;
+    for (let pixelSize = 4; pixelSize <= maxPixelSize; pixelSize++) {
+        brushWidthToolbar.appendChild(createToolWidth("brush", pixelSize));
+    };
+};
+
+function createBrushWidth(pixelSize) {
+
+}
+
+function createToolWidth(toolType, pixelSize) {
     const pixelChooserDiv = document.createElement('div');
     pixelChooserDiv.setAttribute('class', 'item');
-    pixelChooserDiv.setAttribute('data-line-width', pixelSize);
+    pixelChooserDiv.setAttribute(`data-${toolType}-width`, pixelSize);
     pixelChooserDiv.setAttribute('title', `${pixelSize} Pixel`);
     const innerDiv = document.createElement('div');
-    innerDiv.setAttribute('class', 'linewidth');
+    innerDiv.setAttribute('class', `${toolType}width`);
     innerDiv.setAttribute('style', `width:${pixelSize}px;height:${pixelSize}px`);
     pixelChooserDiv.appendChild(innerDiv);
     return pixelChooserDiv;

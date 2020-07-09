@@ -1,4 +1,6 @@
-function initEventListeners(){
+import Tool from './tool.class.js';
+
+function initEventListeners() {
     // parse command icons
     document.querySelectorAll('[data-commands]').forEach(
         item => {
@@ -6,19 +8,27 @@ function initEventListeners(){
                 console.log(item.getAttribute("data-commands"));
             });
         });
-
-    document.querySelectorAll('[data-tools]').forEach(
-        item => {
-            item.addEventListener("click", e =>{
-                document.querySelector("[data-tools].active").classList.toggle("active");
-                item.classList.toggle("active");
-            });
-        }
-    )
-
+    // could be a foreach but idc
+    activeSelector("[data-tools]");
+    activeSelector("[data-line-width]");
+    activeSelector("[data-color]");
     console.log("event listeners initialized");
 };
 
-document.addEventListener('DOMContentLoaded', (event) =>{
+function activeSelector(dataGroup) {
+    document.querySelectorAll(dataGroup).forEach(
+        item => {
+            item.addEventListener("click", e => {
+                document.querySelector(`${dataGroup}.active`).classList.toggle("active");
+                item.classList.toggle("active");
+
+                let selectedTool = item.getAttribute('data-tool');
+
+            });
+        });
+    
+};
+
+document.addEventListener('DOMContentLoaded', (event) => {
     initEventListeners();
 });

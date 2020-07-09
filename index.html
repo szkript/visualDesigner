@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="js/toolbar.js" defer></script>
     <script src="js/app.js" type="module" defer></script>
 </head>
+
 <body>
 
     <div class="toolbox left">
@@ -17,9 +19,11 @@
 
         <div class="group tools" id="tools"></div>
 
-        <div class="group linewidths" id="linewidths"></div>
+        <div class="group linewidths for-shapes" id="linewidths" style="display: block;"></div>
+
+        <div class="group linewidths for-brush" id="brushwidths" style="display: none"></div>
     </div>
-    
+
     <canvas id="canvas" width="800" height="600"></canvas>
 
     <div class="toolbox right">
@@ -28,4 +32,5 @@
 
 
 </body>
+
 </html>
