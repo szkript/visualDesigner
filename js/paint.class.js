@@ -18,6 +18,8 @@ export default class Paint {
     }
 
     onMouseDown(e) {
+        this.savedData = this.context.getImageData(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
+
         this.canvas.onmousemove = e => this.onMouseMove(e);
         document.onmouseup = e => this.onMouseUp(e);
 
@@ -28,7 +30,7 @@ export default class Paint {
     onMouseMove(e) {
         this.currentPos = getMouseCoordsOnCanvas(e, this.canvas);
 
-        switch(this.tool){
+        switch (this.tool) {
             case TOOL_LINE:
                 this.drawShape();
                 break;
@@ -42,7 +44,9 @@ export default class Paint {
         document.onmouseup = null;
     }
 
-    drawShape(){
+    drawShape() {
+        this.context.putImageData(this.savedData, 0, 0);
+
         this.context.beginPath();
         this.context.moveTo(this.startPos.x, this.startPos.y);
         this.context.lineTo(this.currentPos.x, this.currentPos.y);
