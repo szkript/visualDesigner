@@ -1,4 +1,8 @@
-import Tool from './tool.class.js';
+import {TOOL_LINE, TOOL_BRUSH, TOOL_CIRCLE, TOOL_ERASER, TOOL_PAINT_BUCKET, TOOL_PENCIL, TOOL_RECTANGLE, TOOL_TRIANGLE} from './tool.js';
+import Paint from './paint.class.js';
+
+let paint = new Paint('canvas');
+
 
 function initEventListeners() {
     // parse command icons
@@ -25,19 +29,20 @@ function activeSelector(dataGroup) {
 
                 if (dataGroup == "[data-tools]") {
                     let selectedTool = item.getAttribute('data-tools');
+                    paint.activeTool = selectedTool;
 
                     switch (selectedTool) {
-                        case Tool.TOOL_LINE:
-                        case Tool.TOOL_RECTANGLE:
-                        case Tool.TOOL_CIRCLE:
-                        case Tool.TOOL_TRIANGLE:
-                        case Tool.TOOL_PENCIL:
+                        case TOOL_LINE:
+                        case TOOL_RECTANGLE:
+                        case TOOL_CIRCLE:
+                        case TOOL_TRIANGLE:
+                        case TOOL_PENCIL:
                             // activate shape linewidths group
                             document.querySelector(".group.for-shapes").style.display = "block";
                             // invisible brush linewidth group
                             document.querySelector(".group.for-brush").style.display = "none";
                             break;
-                        case Tool.TOOL_BRUSH:
+                        case TOOL_BRUSH:
                             // activate brush linewidths group
                             document.querySelector(".group.for-shapes").style.display = "none";
                             // invisible shape linewidth group
