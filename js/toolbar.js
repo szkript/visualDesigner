@@ -13,7 +13,7 @@ function initCollection(){
 };
 
 function setDefaultActiveItems() {
-    const defaultTool = "pencil";
+    const defaultTool = "line";
     const defaultColor = "#000000";
     const defaultShapePixelSize = "1";
     const defaultBrushPixelSize = "4";

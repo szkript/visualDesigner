@@ -1,8 +1,9 @@
-import {TOOL_LINE, TOOL_BRUSH, TOOL_CIRCLE, TOOL_ERASER, TOOL_PAINT_BUCKET, TOOL_PENCIL, TOOL_RECTANGLE, TOOL_TRIANGLE} from './tool.js';
 import Paint from './paint.class.js';
+import { TOOL_LINE, TOOL_BRUSH, TOOL_CIRCLE, TOOL_ERASER, TOOL_PAINT_BUCKET, TOOL_PENCIL, TOOL_RECTANGLE, TOOL_TRIANGLE } from './tool.js';
 
 let paint = new Paint('canvas');
-
+paint.activeTool = TOOL_LINE;
+paint.init();
 
 function initEventListeners() {
     // parse command icons
