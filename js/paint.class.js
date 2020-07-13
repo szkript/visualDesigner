@@ -60,6 +60,12 @@ export default class Paint {
         }else if(this.tool == TOOL_CIRCLE){
             let distance = findDistance(this.startPos, this.currentPos);
             this.context.arc(this.startPos.x, this.startPos.y, distance, 0, 2 * Math.PI, false);
+        }else if (this.tool == TOOL_TRIANGLE){
+            this.context.moveTo(this.startPos.x + (this.currentPos.x - this.startPos.x) / 2, this.startPos.y);
+            this.context.lineTo(this.startPos.x, this.currentPos.y);
+            this.context.lineTo(this.currentPos.x, this.currentPos.y);
+            this.context.closePath();
+
         }
         this.context.stroke();
     }
