@@ -22,6 +22,11 @@ export default class Paint {
         this._brushSize = brushSize;
     }
 
+    set selectedColor(color){
+        this.color = color;
+        this.context.strokeStyle = this.color;
+    }
+
     init() {
         this.canvas.onmousedown = e => this.onMouseDown(e);
     }

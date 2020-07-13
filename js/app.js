@@ -5,6 +5,7 @@ let paint = new Paint('canvas');
 paint.activeTool = TOOL_LINE;
 paint.lineWidth = 1;
 paint.defaultBrushSize = 4;
+paint.selectedColor = "#000000";
 paint.init();
 
 function initEventListeners() {
@@ -62,6 +63,9 @@ function activeSelector(dataGroup) {
                 }else if(dataGroup == "[data-brush-width]"){
                     let brushSize = item.getAttribute("data-brush-width");
                     paint.brushSize = brushSize;
+                }else if(dataGroup == "[data-color]"){
+                    let color = item.getAttribute("data-color");
+                    paint.selectedColor = color;
                 }
             });
         });
