@@ -3,6 +3,8 @@ import { TOOL_LINE, TOOL_BRUSH, TOOL_CIRCLE, TOOL_ERASER, TOOL_PAINT_BUCKET, TOO
 
 let paint = new Paint('canvas');
 paint.activeTool = TOOL_LINE;
+paint.lineWidth = 1;
+paint.defaultBrushSize = 4;
 paint.init();
 
 function initEventListeners() {
@@ -27,7 +29,7 @@ function activeSelector(dataGroup) {
             item.addEventListener("click", e => {
                 document.querySelector(`${dataGroup}.active`).classList.toggle("active");
                 item.classList.toggle("active");
-
+                
                 if (dataGroup == "[data-tools]") {
                     let selectedTool = item.getAttribute('data-tools');
                     paint.activeTool = selectedTool;
@@ -54,6 +56,12 @@ function activeSelector(dataGroup) {
                             document.querySelector(".group.for-brush").style.display = "none";
                             document.querySelector(".group.for-shapes").style.display = "none";
                     }
+                }else if(dataGroup == "[data-line-width]"){
+                    let linewidth = item.getAttribute("data-line-width");
+                    paint.lineWidth = linewidth;
+                }else if(dataGroup == "[data-brush-width]"){
+                    let brushSize = item.getAttribute("data-brush-width");
+                    paint.brushSize = brushSize;
                 }
             });
         });
