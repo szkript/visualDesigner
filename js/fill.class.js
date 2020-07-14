@@ -1,3 +1,5 @@
+import { findDistance } from "./utility";
+
 export default class Fill {
 
     constructor(canvas, point, color) {
@@ -6,8 +8,10 @@ export default class Fill {
         this.imageData = this.context.getImageData(0, 0, this.context.canvas.width, this.context.canvas.height);
 
         const targetColor = this.getPixel(point);
-        console.log(targetColor);
 
+        const fillColor = this.hexToRgba(color);
+
+        this.floodFill(point, targetColor, fillColor);
 
     }
 
@@ -28,5 +32,15 @@ export default class Fill {
                 this.imageData.data[offset + 3]
             ];
         }
+    }
+
+    hexToRgba(hex){
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return[
+            parseInt(result[1], 16),
+            parseInt(result[2], 16),
+            parseInt(result[3], 16),
+            255
+        ]
     }
 }
