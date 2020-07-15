@@ -13,7 +13,11 @@ function initEventListeners() {
     document.querySelectorAll('[data-commands]').forEach(
         item => {
             item.addEventListener('click', e => {
-                console.log(item.getAttribute("data-commands"));
+                let command = item.getAttribute("data-commands");
+
+                if(command === 'undo'){
+                    paint.undoPaint();
+                }
             });
         });
     // could be a foreach but idc
