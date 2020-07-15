@@ -45,6 +45,9 @@ export default class Paint {
             this.context.moveTo(this.startPos.x, this.startPos.y);
         }else if(this.tool == TOOL_PAINT_BUCKET){
             new Fill(this.canvas, this.startPos, this.color);
+        }else if(this.tool == TOOL_ERASER){
+            this.context.clearRect(this.startPos.x, this.startPos.y,
+                this._brushSize, this._brushSize);
         }
     }
 
@@ -64,6 +67,9 @@ export default class Paint {
             case TOOL_BRUSH:
                 this.drawFreeLine(this._brushSize);
                 break;
+            case TOOL_ERASER:
+                this.context.clearRect(this.currentPos.x, this.currentPos.y,
+                    this._brushSize, this._brushSize);
             default:
                 break;
         }

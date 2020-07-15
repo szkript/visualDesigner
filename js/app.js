@@ -47,11 +47,13 @@ function activeSelector(dataGroup) {
                             document.querySelector(".group.for-brush").style.display = "none";
                             break;
                         case TOOL_BRUSH:
+                        case TOOL_ERASER:
                             // activate brush linewidths group
                             document.querySelector(".group.for-shapes").style.display = "none";
                             // invisible shape linewidth group
                             document.querySelector(".group.for-brush").style.display = "block";
                             break;
+                            
                         default:
                             // make invisible both linewidth group
                             document.querySelector(".group.for-brush").style.display = "none";
